@@ -12,7 +12,7 @@ final class SettingsAccountViewController: UIViewController, MessageBannerViewCo
   internal var messageBannerViewController: MessageBannerViewController?
 
   fileprivate let viewModel: SettingsAccountViewModelType = SettingsAccountViewModel(
-    SettingsAccountViewController.viewController(for:)
+    SettingsAccountViewController.viewController(for:currency:)
   )
 
   internal static func instantiate() -> SettingsAccountViewController {
@@ -98,7 +98,7 @@ final class SettingsAccountViewController: UIViewController, MessageBannerViewCo
                                                  message: Strings.Something_went_wrong_please_try_again())
   }
 
-  static func viewController(for cellType: SettingsAccountCellType) -> UIViewController? {
+  static func viewController(for cellType: SettingsAccountCellType, currency: Currency) -> UIViewController? {
     switch cellType {
     case .changeEmail:
       return ChangeEmailViewController.instantiate()
@@ -107,7 +107,9 @@ final class SettingsAccountViewController: UIViewController, MessageBannerViewCo
     case .privacy:
       return SettingsPrivacyViewController.instantiate()
     case .currency:
-      return SelectCurrencyViewController.instantiate()
+      let vc = SelectCurrencyViewController.instantiate()
+      vc.configure(with: currency)
+      return vc
     default:
       return nil
     }

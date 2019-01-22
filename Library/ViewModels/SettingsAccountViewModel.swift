@@ -24,7 +24,7 @@ public protocol SettingsAccountViewModelType {
 public final class SettingsAccountViewModel: SettingsAccountViewModelInputs,
 SettingsAccountViewModelOutputs, SettingsAccountViewModelType {
 
-  public init(_ viewControllerFactory: @escaping (SettingsAccountCellType) -> UIViewController?) {
+  public init(_ viewControllerFactory: @escaping (SettingsAccountCellType, Currency) -> UIViewController?) {
     let userAccountFields = self.viewWillAppearProperty.signal
       .switchMap { _ in
         return AppEnvironment.current.apiService
@@ -90,9 +90,12 @@ SettingsAccountViewModelOutputs, SettingsAccountViewModelType {
 //
 //    self.dismissCurrencyPicker = self.dismissPickerTapProperty.signal
 
-    self.transitionToViewController = self.selectedCellTypeProperty.signal.skipNil()
-      .map(viewControllerFactory)
-      .skipNil()
+    self.transitionToViewController = Signal.combineLatest(
+      self.selectedCellTypeProperty.signal.skipNil(),
+      chosenCurrency
+    )
+    .map(viewControllerFactory)
+    .skipNil()
 
 //    self.showAlert = self.changeCurrencyAlertProperty.signal.skipNil().ignoreValues()
 

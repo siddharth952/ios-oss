@@ -1,9 +1,11 @@
 import Foundation
+import Prelude
 import ReactiveSwift
 import Result
 
 public protocol SelectCurrencyViewModelInputs {
-  func configure(with selectedCurrency: Currency?)
+  func configure(with selectedCurrency: Currency)
+  func didSelect(_ currency: Currency)
   func viewDidLoad()
 }
 
@@ -20,14 +22,26 @@ final public class SelectCurrencyViewModel: SelectCurrencyViewModelType, SelectC
 SelectCurrencyViewModelOutputs {
 
   public init() {
-//    let currencies = self.viewDidLoadSignal.switchMap {
-//
-//    }
+    let chosenCurrency = Signal.combineLatest(
+      self.selectedCurrencySignal,
+      self.viewDidLoadSignal
+    )
+    .map(first)
+
+    self.selectedCurrencyProperty <~ Signal.merge(
+      chosenCurrency,
+      didSelectCurrencySignal
+    )
   }
 
-  private let (selectedCurrencySignal, selectedCurrencyObserver) = Signal<Currency?, NoError>.pipe()
-  public func configure(with selectedCurrency: Currency?) {
+  private let (selectedCurrencySignal, selectedCurrencyObserver) = Signal<Currency, NoError>.pipe()
+  public func configure(with selectedCurrency: Currency) {
     self.selectedCurrencyObserver.send(value: selectedCurrency)
+  }
+
+  private let (didSelectCurrencySignal, didSelectCurrencyObserver) = Signal<Currency, NoError>.pipe()
+  public func didSelect(_ currency: Currency) {
+    self.didSelectCurrencyObserver.send(value: currency)
   }
 
   private let (viewDidLoadSignal, viewDidLoadObserver) = Signal<(), NoError>.pipe()
@@ -35,8 +49,9 @@ SelectCurrencyViewModelOutputs {
     self.viewDidLoadObserver.send(value: ())
   }
 
+  private let selectedCurrencyProperty = MutableProperty<Currency?>(nil)
   public func isSelectedCurrency(_ currency: Currency) -> Bool {
-    return true
+    return currency == self.selectedCurrencyProperty.value
   }
 
   public var inputs: SelectCurrencyViewModelInputs { return self }
