@@ -74,7 +74,11 @@ SettingsAccountViewModelOutputs, SettingsAccountViewModelType {
 //
 //    let currency = Signal.merge(chosenCurrency, updateCurrency)
 
-    self.reloadData = Signal.combineLatest(chosenCurrency, shouldHideEmailWarning, shouldHideEmailPasswordSection)
+    self.reloadData = Signal.combineLatest(
+      chosenCurrency,
+      shouldHideEmailWarning,
+      shouldHideEmailPasswordSection
+    )
 
 //    let updateCurrencyInProgress = Signal.merge(
 //      self.viewDidLoadProperty.signal.mapConst(false),
