@@ -10,6 +10,7 @@ public final class PaymentMethodsFooterView: UITableViewHeaderFooterView {
 
   public weak var delegate: PaymentMethodsFooterViewDelegate?
 
+  @IBOutlet private weak var addNewCardButton: UIButton!
   @IBOutlet private weak var plusLabel: UILabel!
   @IBOutlet private weak var titleLabel: UILabel!
   @IBOutlet private weak var separatorView: UIView!
@@ -31,6 +32,9 @@ public final class PaymentMethodsFooterView: UITableViewHeaderFooterView {
 
     _ = self.separatorView
       |> separatorStyle
+
+    _ = self.addNewCardButton
+      |> UIButton.lens.backgroundColor(for: .highlighted) .~ .darkGray
   }
 
   @IBAction func addNewCardButtonTapped(_ sender: Any) {
