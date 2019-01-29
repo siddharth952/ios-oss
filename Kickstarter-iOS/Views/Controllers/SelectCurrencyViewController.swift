@@ -4,6 +4,8 @@ import UIKit
 final class SelectCurrencyViewController: UITableViewController {
   private let viewModel: SelectCurrencyViewModelType = SelectCurrencyViewModel()
 
+  private var saveButtonView: LoadingBarButtonItemView!
+
   internal static func instantiate() -> SelectCurrencyViewController {
     return SelectCurrencyViewController(nibName: nil, bundle: nil)
   }
@@ -17,7 +19,34 @@ final class SelectCurrencyViewController: UITableViewController {
 
     self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
+    self.saveButtonView = LoadingBarButtonItemView.instantiate()
+    self.saveButtonView.setTitle(title: Strings.Save())
+    self.saveButtonView.addTarget(self, action: #selector(saveButtonTapped(_:)))
+
+    let navigationBarButton = UIBarButtonItem(customView: self.saveButtonView)
+    self.navigationItem.setRightBarButton(navigationBarButton, animated: false)
+
     self.viewModel.inputs.viewDidLoad()
+  }
+
+  override func bindViewModel() {
+    super.bindViewModel()
+
+    self.viewModel.outputs.activityIndicatorShouldShow
+      .observeForUI()
+      .observeValues { shouldShow in
+        if shouldShow {
+          self.saveButtonView.startAnimating()
+        } else {
+          self.saveButtonView.stopAnimating()
+        }
+    }
+
+    self.viewModel.outputs.saveButtonIsEnabled
+      .observeForUI()
+      .observeValues { [weak self] (isEnabled) in
+        self?.saveButtonView.setIsEnabled(isEnabled: isEnabled)
+    }
   }
 }
 
@@ -45,5 +74,9 @@ extension SelectCurrencyViewController {
     cell.accessoryType = self.viewModel.outputs.isSelectedCurrency(currency) ? .checkmark : .none
 
     return cell
+  }
+
+  @objc private func saveButtonTapped(_ sender: Any) {
+    self.viewModel.inputs.saveButtonTapped()
   }
 }

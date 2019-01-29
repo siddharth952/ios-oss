@@ -90,12 +90,11 @@ SettingsAccountViewModelOutputs, SettingsAccountViewModelType {
 //
 //    self.dismissCurrencyPicker = self.dismissPickerTapProperty.signal
 
-    self.transitionToViewController = Signal.combineLatest(
-      self.selectedCellTypeProperty.signal.skipNil(),
-      chosenCurrency
-    )
-    .map(viewControllerFactory)
-    .skipNil()
+    self.transitionToViewController = chosenCurrency
+      .takePairWhen(self.selectedCellTypeProperty.signal.skipNil())
+      .map { ($1, $0) }
+      .map(viewControllerFactory)
+      .skipNil()
 
 //    self.showAlert = self.changeCurrencyAlertProperty.signal.skipNil().ignoreValues()
 
