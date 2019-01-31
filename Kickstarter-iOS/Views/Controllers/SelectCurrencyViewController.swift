@@ -39,10 +39,28 @@ final class SelectCurrencyViewController: UIViewController, MessageBannerViewCon
   override func bindStyles() {
     super.bindStyles()
 
+    _ = self.tableView
+      |> settingsTableViewStyle
+      |> \.separatorStyle .~ .singleLine
+
+    _ = self.headerImageView
+      |> \.contentMode .~ .scaleAspectFill
+
+    _ = self.headerStackView
+      |> \.axis .~ .vertical
+      |> \.alignment .~ .center
+      |> \.spacing .~ Styles.grid(2)
+      |> \.layoutMargins .~ .init(
+        top: Styles.grid(4), left: Styles.grid(2), bottom: Styles.grid(2), right: Styles.grid(2)
+      )
+      |> \.isLayoutMarginsRelativeArrangement .~ true
+
     _ = self.headerLabel
-      |> UILabel.lens.text %~ { _ in
+      |> settingsDescriptionLabelStyle
+      |> \.textColor .~ .ksr_text_dark_grey_500
+      |> \.text %~ { _ in
         """
-        \(Strings.This_allows_you_to_see_project_goal_and_pledge_amounts_in_your_preferred_currency())\n
+        \(Strings.Making_this_change())\n
         \(Strings.A_successfully_funded_project_will_collect_your_pledge_in_its_native_currency())
         """
     }
@@ -102,32 +120,28 @@ final class SelectCurrencyViewController: UIViewController, MessageBannerViewCon
   private lazy var headerView: UIView = {
     let view = UIView(frame: .zero)
 
+    view.addSubview(self.headerStackView)
+    self.headerStackView.constrainEdges(to: view)
+
+    return view
+  }()
+
+  private lazy var headerStackView: UIStackView = {
     let stackView = UIStackView(arrangedSubviews: [
       self.headerImageView,
       self.headerLabel
     ])
 
-    stackView.axis = .vertical
-    stackView.alignment = .center
-    stackView.spacing = Styles.grid(1)
-    stackView.layoutMargins = .init(all: Styles.grid(2))
-    stackView.isLayoutMarginsRelativeArrangement = true
-
-    view.addSubview(stackView)
-    stackView.constrainEdges(to: view)
-
-    return view
+    return stackView
   }()
 
   private lazy var headerImageView: UIImageView = {
     let imageView = UIImageView(image: image(named: "icon--currency-header"))
-    imageView.contentMode = .scaleAspectFill
     return imageView
   }()
 
   private lazy var headerLabel: UILabel = {
     let label = UILabel(frame: .zero)
-    label.numberOfLines = 0
     return label
   }()
 }

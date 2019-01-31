@@ -674,6 +674,7 @@
 		D002CAE5218CF951009783F2 /* GraphMutationWatchProjectResponseEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = D002CAE4218CF951009783F2 /* GraphMutationWatchProjectResponseEnvelope.swift */; };
 		D00932DB21F107CF007AD873 /* SelectCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00932DA21F107CF007AD873 /* SelectCurrencyViewController.swift */; };
 		D00932DD21F10864007AD873 /* SelectCurrencyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00932DC21F10864007AD873 /* SelectCurrencyViewModel.swift */; };
+		D00CD89D2203AA5E008E2925 /* SelectCurrencyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00CD89C2203AA5E008E2925 /* SelectCurrencyViewModelTests.swift */; };
 		D01587591EEB2DE4006E7684 /* KsApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D01587501EEB2DE4006E7684 /* KsApi.framework */; };
 		D015882B1EEB2ED7006E7684 /* NSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D015876A1EEB2ED6006E7684 /* NSURLSession.swift */; };
 		D015882D1EEB2ED7006E7684 /* BasicHTTPAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D015876D1EEB2ED6006E7684 /* BasicHTTPAuth.swift */; };
@@ -862,19 +863,16 @@
 		D04AAC32218BB70D00CF713E /* MessageBannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC1B218BB70C00CF713E /* MessageBannerViewModel.swift */; };
 		D04AAC33218BB70D00CF713E /* SettingsPrivacySwitchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC1C218BB70C00CF713E /* SettingsPrivacySwitchCellViewModel.swift */; };
 		D04AAC34218BB70D00CF713E /* SettingsAccountPickerCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC1D218BB70C00CF713E /* SettingsAccountPickerCellViewModel.swift */; };
-		D04AAC35218BB70D00CF713E /* SettingsCurrencyPickerCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC1E218BB70C00CF713E /* SettingsCurrencyPickerCellViewModel.swift */; };
 		D04AACA5218BB72100CF713E /* BetaToolsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC1A218BB70B00CF713E /* BetaToolsViewModelTests.swift */; };
 		D04AACA6218BB72100CF713E /* ChangePasswordViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC13218BB70A00CF713E /* ChangePasswordViewModelTests.swift */; };
 		D04AACA7218BB72100CF713E /* DiscoveryProjectCategoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC10218BB70900CF713E /* DiscoveryProjectCategoryViewModelTests.swift */; };
 		D04AACA8218BB72100CF713E /* FindFriendsCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC15218BB70A00CF713E /* FindFriendsCellViewModelTests.swift */; };
 		D04AACA9218BB72100CF713E /* LoadingBarButtonItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC14218BB70A00CF713E /* LoadingBarButtonItemViewModelTests.swift */; };
 		D04AACAA218BB72100CF713E /* MessageBannerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC11218BB70A00CF713E /* MessageBannerViewModelTests.swift */; };
-		D04AACAB218BB72100CF713E /* SettingsCurrencyPickerCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC0B218BB70800CF713E /* SettingsCurrencyPickerCellViewModelTests.swift */; };
 		D04AACAC218BB72100CF713E /* SettingsNotificationCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC0F218BB70900CF713E /* SettingsNotificationCellViewModelTests.swift */; };
 		D04AACAD218BB72100CF713E /* SettingsNotificationPickerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC19218BB70B00CF713E /* SettingsNotificationPickerViewModelTests.swift */; };
 		D04AACAE218BB72100CF713E /* SettingsPrivacySwitchCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC0C218BB70900CF713E /* SettingsPrivacySwitchCellViewModelTests.swift */; };
 		D04AACAF218BB72100CF713E /* SettingsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AAC09218BB70800CF713E /* SettingsViewModelTests.swift */; };
-		D04AACBF218BC9FE00CF713E /* SettingsCurrencyPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04AACBE218BC9FE00CF713E /* SettingsCurrencyPickerCell.swift */; };
 		D04F48D41E0313FB00EDC98A /* ActivityProjectStatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A762F01B1C8CD2B3005581A4 /* ActivityProjectStatusCell.swift */; };
 		D05C0CB01E02E3F100914393 /* LiveStreamActivityItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05C0CAF1E02E3F100914393 /* LiveStreamActivityItemProvider.swift */; };
 		D07226E91E66E9C500C2E537 /* LiveStreamContainerPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07226E81E66E9C500C2E537 /* LiveStreamContainerPageViewController.swift */; };
@@ -2412,6 +2410,7 @@
 		D002CAE4218CF951009783F2 /* GraphMutationWatchProjectResponseEnvelope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphMutationWatchProjectResponseEnvelope.swift; sourceTree = "<group>"; };
 		D00932DA21F107CF007AD873 /* SelectCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyViewController.swift; sourceTree = "<group>"; };
 		D00932DC21F10864007AD873 /* SelectCurrencyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyViewModel.swift; sourceTree = "<group>"; };
+		D00CD89C2203AA5E008E2925 /* SelectCurrencyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCurrencyViewModelTests.swift; sourceTree = "<group>"; };
 		D01587501EEB2DE4006E7684 /* KsApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KsApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D01587531EEB2DE4006E7684 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D01587581EEB2DE4006E7684 /* KsApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KsApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2616,7 +2615,6 @@
 		D04AAC08218BB70800CF713E /* SettingsNotificationCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsNotificationCellViewModel.swift; sourceTree = "<group>"; };
 		D04AAC09218BB70800CF713E /* SettingsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTests.swift; sourceTree = "<group>"; };
 		D04AAC0A218BB70800CF713E /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
-		D04AAC0B218BB70800CF713E /* SettingsCurrencyPickerCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCurrencyPickerCellViewModelTests.swift; sourceTree = "<group>"; };
 		D04AAC0C218BB70900CF713E /* SettingsPrivacySwitchCellViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPrivacySwitchCellViewModelTests.swift; sourceTree = "<group>"; };
 		D04AAC0D218BB70900CF713E /* DiscoveryProjectCategoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryProjectCategoryViewModel.swift; sourceTree = "<group>"; };
 		D04AAC0E218BB70900CF713E /* FindFriendsCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindFriendsCellViewModel.swift; sourceTree = "<group>"; };
@@ -2635,8 +2633,6 @@
 		D04AAC1B218BB70C00CF713E /* MessageBannerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBannerViewModel.swift; sourceTree = "<group>"; };
 		D04AAC1C218BB70C00CF713E /* SettingsPrivacySwitchCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPrivacySwitchCellViewModel.swift; sourceTree = "<group>"; };
 		D04AAC1D218BB70C00CF713E /* SettingsAccountPickerCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAccountPickerCellViewModel.swift; sourceTree = "<group>"; };
-		D04AAC1E218BB70C00CF713E /* SettingsCurrencyPickerCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCurrencyPickerCellViewModel.swift; sourceTree = "<group>"; };
-		D04AACBE218BC9FE00CF713E /* SettingsCurrencyPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsCurrencyPickerCell.swift; sourceTree = "<group>"; };
 		D05C0CAF1E02E3F100914393 /* LiveStreamActivityItemProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamActivityItemProvider.swift; sourceTree = "<group>"; };
 		D07226E81E66E9C500C2E537 /* LiveStreamContainerPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamContainerPageViewController.swift; sourceTree = "<group>"; };
 		D07226EA1E66EA1600C2E537 /* LiveStreamEventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamEventDetailsViewController.swift; sourceTree = "<group>"; };
@@ -3289,7 +3285,6 @@
 				D7A37C8E1E2EB01700EA066D /* SearchEmptyStateCell.swift */,
 				77752F5D219B39EA00E7DA7D /* SettingsAccountWarningCell.swift */,
 				D7C9F10A2171481C006F412F /* SettingsCurrencyCell.swift */,
-				D04AACBE218BC9FE00CF713E /* SettingsCurrencyPickerCell.swift */,
 				D7237097211A3925001EA4CA /* SettingsFollowCell.swift */,
 				D6B6766A20FF8F890082717D /* SettingsNewslettersCell.swift */,
 				D6C38459210B9AC400ADB671 /* SettingsNewslettersTopCell.swift */,
@@ -4076,13 +4071,13 @@
 				A7ED1F7B1E831C5C00BFFA01 /* SearchEmptyStateCellViewModelTests.swift */,
 				A7F441AA1D005A9400FE6FC5 /* SearchViewModel.swift */,
 				A7ED1FA41E831C5C00BFFA01 /* SearchViewModelTests.swift */,
+				D00932DC21F10864007AD873 /* SelectCurrencyViewModel.swift */,
+				D00CD89C2203AA5E008E2925 /* SelectCurrencyViewModelTests.swift */,
 				D04AAC1D218BB70C00CF713E /* SettingsAccountPickerCellViewModel.swift */,
 				D60C8BEA21430BC200D96152 /* SettingsAccountViewModel.swift */,
 				D798A70F216695090053D097 /* SettingsAccountViewModelTests.swift */,
 				D76E9BEE2174EF580049F64E /* SettingsCurrencyCellViewModel.swift */,
 				D7774483217A465D008D679F /* SettingsCurrencyCellViewModelTests.swift */,
-				D04AAC1E218BB70C00CF713E /* SettingsCurrencyPickerCellViewModel.swift */,
-				D04AAC0B218BB70800CF713E /* SettingsCurrencyPickerCellViewModelTests.swift */,
 				D79F0F7421068DC800D3B32C /* SettingsDeleteAccountCellViewModel.swift */,
 				D723708B2118CAD8001EA4CA /* SettingsDeleteAccountCellViewModelTests.swift */,
 				D796867B20FE655300E54C61 /* SettingsFollowCellViewModel.swift */,
@@ -4127,7 +4122,6 @@
 				D08CD200219216BA009F89F0 /* WatchProjectViewModelTests.swift */,
 				9D89B7E41D6B8DB90021F6FF /* WebModalViewModel.swift */,
 				A7ED1F8A1E831C5C00BFFA01 /* WebModalViewModelTests.swift */,
-				D00932DC21F10864007AD873 /* SelectCurrencyViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -5612,7 +5606,6 @@
 				A75511651C8642C3005355CF /* String+SimpleHTML.swift in Sources */,
 				A7F441C31D005A9400FE6FC5 /* FacebookConfirmationViewModel.swift in Sources */,
 				D0200A5621935F2900F5CC27 /* MessageBannerType.swift in Sources */,
-				D04AAC35218BB70D00CF713E /* SettingsCurrencyPickerCellViewModel.swift in Sources */,
 				D70347901DBAABC30099C668 /* DiscoveryExpandableRowCellViewModel.swift in Sources */,
 				0199545F1D2D818E00BC1390 /* DashboardProjectsDrawerViewModel.swift in Sources */,
 				A76126B91C90C94000EDCCB9 /* UIView-Extensions.swift in Sources */,
@@ -5821,6 +5814,7 @@
 				A70E9EE41E859C96009E67F2 /* LiveStreamContainerPageViewModelTests.swift in Sources */,
 				A7ED1FC51E831C5C00BFFA01 /* CommentsEmptyStateCellViewModelTests.swift in Sources */,
 				A7ED1F391E830FDC00BFFA01 /* UILabel+IBClearTests.swift in Sources */,
+				D00CD89D2203AA5E008E2925 /* SelectCurrencyViewModelTests.swift in Sources */,
 				D7A86A3B1F324EB300C7DA53 /* MostPopularSearchProjectCellViewModelTests.swift in Sources */,
 				A7ED1FD61E831C5C00BFFA01 /* ActivityUpdateViewModelTests.swift in Sources */,
 				A70E9EE51E859C96009E67F2 /* LiveStreamChatViewModelTests.swift in Sources */,
@@ -5877,7 +5871,6 @@
 				A7ED1F2F1E830FDC00BFFA01 /* LocalizedStringTests.swift in Sources */,
 				D04AACAC218BB72100CF713E /* SettingsNotificationCellViewModelTests.swift in Sources */,
 				D04AACAA218BB72100CF713E /* MessageBannerViewModelTests.swift in Sources */,
-				D04AACAB218BB72100CF713E /* SettingsCurrencyPickerCellViewModelTests.swift in Sources */,
 				A7ED1FBC1E831C5C00BFFA01 /* FindFriendsFriendFollowCellViewModelTests.swift in Sources */,
 				A7ED1FDD1E831C5C00BFFA01 /* ShareViewModelTests.swift in Sources */,
 				A7ED20001E831C5C00BFFA01 /* SearchViewModelTests.swift in Sources */,
@@ -6025,7 +6018,6 @@
 				59392BEC1D7094B0001C99A4 /* ProjectUpdatesViewController.swift in Sources */,
 				D7A37C8F1E2EB01700EA066D /* SearchEmptyStateCell.swift in Sources */,
 				9DDE1F721D5925A90092D9A5 /* CheckoutViewController.swift in Sources */,
-				D04AACBF218BC9FE00CF713E /* SettingsCurrencyPickerCell.swift in Sources */,
 				01940B2B1D46814E0074FCE3 /* HelpWebViewModel.swift in Sources */,
 				D08A817B1DFAAD04000128DB /* LiveStreamContainerViewController.swift in Sources */,
 				598D96B61D426D80003F3F66 /* ActivitySampleFollowCell.swift in Sources */,
