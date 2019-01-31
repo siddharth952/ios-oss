@@ -29,23 +29,24 @@ final public class SelectCurrencyViewModel: SelectCurrencyViewModelType, SelectC
 SelectCurrencyViewModelOutputs {
 
   public init() {
-    let chosenCurrency = Signal.combineLatest(
+    let initialChosenCurrency = Signal.combineLatest(
       self.selectedCurrencySignal,
       self.viewDidLoadSignal
     )
     .map(first)
 
     self.selectedCurrencyProperty <~ Signal.merge(
-      chosenCurrency,
+      initialChosenCurrency,
       self.didSelectCurrencySignal
     )
 
     let updateCurrencyEvent = self.selectedCurrencyProperty.signal.skipNil()
       .takeWhen(self.saveButtonTappedSignal.ignoreValues())
-      .map { ChangeCurrencyInput(chosenCurrency: $0.rawValue) }
-      .switchMap {
-        AppEnvironment.current.apiService.changeCurrency(input: $0)
+      .switchMap { input in
+        AppEnvironment.current.apiService
+          .changeCurrency(input: ChangeCurrencyInput(chosenCurrency: input.rawValue))
           .ksr_delay(AppEnvironment.current.apiDelayInterval, on: AppEnvironment.current.scheduler)
+          .map { _ in input }
           .materialize()
     }
 
@@ -58,9 +59,21 @@ SelectCurrencyViewModelOutputs {
       updateCurrencyEvent.filter { $0.isTerminating }.mapConst(false)
     )
 
-    self.saveButtonIsEnabled = Signal.combineLatest(
-      chosenCurrency,
+    let updatedCurrency = updateCurrencyEvent.values()
+
+    let initialAndSelected = Signal.combineLatest(
+      initialChosenCurrency,
       self.didSelectCurrencySignal
+    )
+
+    let updatedAndSelected = Signal.combineLatest(
+      updatedCurrency,
+      self.didSelectCurrencySignal
+    )
+
+    self.saveButtonIsEnabled = Signal.merge(
+      initialAndSelected,
+      updatedAndSelected
     )
     .map(!=)
   }

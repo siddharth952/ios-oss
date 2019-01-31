@@ -49,30 +49,6 @@ SettingsAccountViewModelOutputs, SettingsAccountViewModelType {
 
     let chosenCurrency = userAccountFields.values()
       .map { Currency(rawValue: $0.me.chosenCurrency ?? Currency.USD.rawValue) ?? Currency.USD }
-//
-//    let currencyCellSelected = self.selectedCellTypeProperty.signal
-//      .skipNil()
-//      .filter { $0 == .currency }
-//
-//    let didConfirmChangeCurrency = self.didConfirmChangeCurrencyProperty.signal
-//
-//    let updateCurrencyEvent = self.changeCurrencyAlertProperty.signal.skipNil()
-//      .takeWhen(didConfirmChangeCurrency.signal)
-//      .map { ChangeCurrencyInput(chosenCurrency: $0.rawValue) }
-//      .switchMap {
-//        AppEnvironment.current.apiService.changeCurrency(input: $0)
-//          .ksr_delay(AppEnvironment.current.apiDelayInterval, on: AppEnvironment.current.scheduler)
-//          .materialize()
-//    }
-//
-//    let updateCurrency = self.changeCurrencyAlertProperty.signal.skipNil()
-//      .takeWhen(updateCurrencyEvent.values().ignoreValues())
-//
-//    self.updateCurrencyFailure = updateCurrencyEvent.errors()
-//      .map { $0.localizedDescription }
-//    self.currencyUpdated = updateCurrencyEvent.values().ignoreValues()
-//
-//    let currency = Signal.merge(chosenCurrency, updateCurrency)
 
     self.reloadData = Signal.combineLatest(
       chosenCurrency,
@@ -80,27 +56,11 @@ SettingsAccountViewModelOutputs, SettingsAccountViewModelType {
       shouldHideEmailPasswordSection
     )
 
-//    let updateCurrencyInProgress = Signal.merge(
-//      self.viewDidLoadProperty.signal.mapConst(false),
-//      didConfirmChangeCurrency.signal.mapConst(true),
-//      updateCurrencyEvent.filter { $0.isTerminating }.mapConst(false)
-//    )
-//
-//    self.presentCurrencyPicker = Signal.combineLatest(currency, updateCurrencyInProgress)
-//      .takePairWhen(currencyCellSelected.signal)
-//      .map(unpack)
-//      .filter(second >>> isFalse)
-//      .map(first)
-//
-//    self.dismissCurrencyPicker = self.dismissPickerTapProperty.signal
-
     self.transitionToViewController = chosenCurrency
       .takePairWhen(self.selectedCellTypeProperty.signal.skipNil())
       .map { ($1, $0) }
       .map(viewControllerFactory)
       .skipNil()
-
-//    self.showAlert = self.changeCurrencyAlertProperty.signal.skipNil().ignoreValues()
 
     self.viewDidAppearProperty.signal
       .observeValues { _ in AppEnvironment.current.koala.trackAccountView() }

@@ -49,11 +49,6 @@ final class SettingsAccountViewController: UIViewController, MessageBannerViewCo
   }
 
   override func bindViewModel() {
-//    self.viewModel.outputs.currencyUpdated
-//      .observeForControllerAction()
-//      .observeValues { _ in
-//        NotificationCenter.default.post(.init(name: .ksr_userLocalePreferencesChanged))
-//    }
 
     self.viewModel.outputs.reloadData
       .observeForUI()
@@ -114,41 +109,6 @@ final class SettingsAccountViewController: UIViewController, MessageBannerViewCo
       return nil
     }
   }
-
-//  private func showChangeCurrencyAlert() {
-//    let alertController = UIAlertController(
-//      title: Strings.Change_currency(),
-//      message: """
-//      \(Strings.This_allows_you_to_see_project_goal_and_pledge_amounts_in_your_preferred_currency()) \n
-//      \(Strings.A_successfully_funded_project_will_collect_your_pledge_in_its_native_currency())
-//      """,
-//      preferredStyle: .alert
-//    )
-//
-//    alertController.addAction(
-//      UIAlertAction(
-//        title: Strings.Yes_change_currency(),
-//        style: .default,
-//        handler: { [weak self] _ in
-//          self?.viewModel.inputs.didConfirmChangeCurrency()
-//        }
-//      )
-//    )
-//
-//    alertController.addAction(
-//      UIAlertAction(
-//        title: Strings.Cancel(),
-//        style: .cancel,
-//        handler: nil
-//      )
-//    )
-//
-//    self.present(alertController, animated: true, completion: nil)
-//  }
-//
-//  @objc private func tapGestureToDismissCurrencyPicker() {
-//    self.viewModel.inputs.dismissPickerTap()
-//  }
 }
 
 extension SettingsAccountViewController: UITableViewDelegate {
