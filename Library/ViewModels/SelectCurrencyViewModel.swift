@@ -61,6 +61,9 @@ SelectCurrencyViewModelOutputs {
 
     let updatedCurrency = updateCurrencyEvent.values()
 
+    updatedCurrency
+      .observeValues { AppEnvironment.current.koala.trackChangedCurrency($0) }
+
     let initialAndSelected = Signal.combineLatest(
       initialChosenCurrency,
       self.didSelectCurrencySignal
@@ -71,11 +74,16 @@ SelectCurrencyViewModelOutputs {
       self.didSelectCurrencySignal
     )
 
-    self.saveButtonIsEnabled = Signal.merge(
+    let currenciesMatch = Signal.merge(
       initialAndSelected,
       updatedAndSelected
     )
     .map(!=)
+
+    self.saveButtonIsEnabled = Signal.merge(
+      self.viewDidLoadSignal.mapConst(false),
+      currenciesMatch
+    )
   }
 
   private let (selectedCurrencySignal, selectedCurrencyObserver) = Signal<Currency, NoError>.pipe()
