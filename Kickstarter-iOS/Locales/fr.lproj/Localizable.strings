@@ -77,6 +77,7 @@
 "Couldnt_add_attachment" = "Impossible d'ajouter la pièce jointe";
 "Couldnt_open_live_stream_Try_again_later" = "Impossible d'ouvrir la diffusion en direct. Veuillez réessayer plus tard.";
 "Couldnt_remove_attachment" = "Impossible de supprimer la pièce jointe";
+"Create_password" = "Créer votre mot de passe";
 "Created_projects_projects_count" = "Projets créés : %{projects_count}";
 "Creator" = "Créateur";
 "Creator_name_is_live_now" = "<b>%{creator_name}</b> est en direct en ce moment";

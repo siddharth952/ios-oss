@@ -77,6 +77,7 @@
 "Couldnt_add_attachment" = "No se pudo añadir el anexo";
 "Couldnt_open_live_stream_Try_again_later" = "No se pudo abrir este live stream, por favor inténtalo de nuevo más tarde.";
 "Couldnt_remove_attachment" = "No se pudo remover el anexo";
+"Create_password" = "Crea contraseña";
 "Created_projects_projects_count" = "Proyectos creados: %{projects_count}";
 "Creator" = "Creador";
 "Creator_name_is_live_now" = "<b>%{creator_name}</b> está transmitiendo en vivo";

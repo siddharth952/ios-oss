@@ -1289,6 +1289,23 @@ contributeur"
     )
   }
   /**
+   "Create password"
+
+   - **en**: "Create password"
+   - **de**: "Passwort erstellen"
+   - **es**: "Crea contraseña"
+   - **fr**: "Créer votre mot de passe"
+   - **ja**: "パスワードを作成"
+  */
+  public static func Create_password() -> String {
+    return localizedString(
+      key: "Create_password",
+      defaultValue: "Create password",
+      count: nil,
+      substitutions: [:]
+    )
+  }
+  /**
    "Created projects %{projects_count}"
 
    - **en**: "Created projects %{projects_count}"

@@ -77,6 +77,7 @@
 "Couldnt_add_attachment" = "Couldn't add attachment";
 "Couldnt_open_live_stream_Try_again_later" = "Couldn‘t open live stream. Try again later.";
 "Couldnt_remove_attachment" = "Couldn't remove attachment";
+"Create_password" = "Create password";
 "Created_projects_projects_count" = "Created projects %{projects_count}";
 "Creator" = "Creator";
 "Creator_name_is_live_now" = "<b>%{creator_name}</b> is live now";
